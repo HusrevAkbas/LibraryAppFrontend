@@ -1,4 +1,15 @@
-<div *ngFor="let book of bookList">
-  <img src="{{book.imageUrl}} " alt="Cover image of {} ">
-  <h3> {{book.name}} </h3>
-</div>
+<ul class="row">
+  <li *ngFor="let book of bookList" class="col-md-4 col-sm-6 mx-auto">
+    <a href="#">
+      <div class="card text-center">
+        <div class="card-header">
+          <img class="img-fluid img-thumbnail" src="{{book.imageUrl}}" alt="">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{book.name}}</h5>
+          <p> {{book.author}} </p>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>

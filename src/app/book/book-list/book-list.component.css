@@ -1,0 +1,12 @@
+.card{
+  max-width: 18rem;
+  height: 100%;
+  margin:auto;
+  text-align: center;
+}
+.card-header{
+  height: 200px;
+}
+img{
+  max-height: 100%;
+}

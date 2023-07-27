@@ -8,7 +8,7 @@ import { Book } from '../book';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent {
-  bookList: Book[] | undefined;
+  bookList: Book[] = [];
   constructor(private bookService: BookService){
     this.bookService.getBooks().subscribe((res:any)=>{
       this.bookList = res.data;
