@@ -1,5 +1,5 @@
-import { Category } from "../category/category";
-import { User } from "../user/user";
+import { Category } from "./category";
+import { User } from "./user";
 
 export interface Book {
   id: number,
