@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { LoginRequest } from '../models/login-request';
+import { LoginRequest } from '../models/requests/login-request';
 
 @Component({
   selector: 'app-signin',
@@ -11,7 +11,7 @@ import { LoginRequest } from '../models/login-request';
 export class SigninComponent {
   constructor(private userService: UserService){}
 
-  responseData;
+  responseData: any;
 
   signinForm = new FormGroup({
     username: new FormControl(""),
@@ -24,7 +24,10 @@ export class SigninComponent {
       this.signinForm.value.password!
     )
     this.userService.signin(loginRequest).subscribe(response =>{
+      this.userService.user = JSON.stringify( response.data.user)
+      this.userService.jwttoken=JSON.stringify( response.data.token)
       this.responseData = response;
+      console.log(this.userService.user)
     })
   }
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../services/user.service';
-import { RegisterRequest } from '../models/register-request';
+import { RegisterRequest } from '../models/requests/register-request';
 
 @Component({
   selector: 'app-register',
