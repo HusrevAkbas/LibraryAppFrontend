@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LoginRequest } from '../models/requests/login-request';
 import { BookService } from '../services/book.service';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-signin',
@@ -12,7 +13,8 @@ import { BookService } from '../services/book.service';
 export class SigninComponent {
   constructor(
     private userService: UserService,
-    private bookService: BookService
+    private bookService: BookService,
+    private tokenService: TokenService
     ){}
 
   responseData: any;
@@ -28,8 +30,8 @@ export class SigninComponent {
       this.signinForm.value.password!
     )
     this.userService.signin(loginRequest).subscribe(response =>{
-      this.userService.user = JSON.stringify( response.data.user)
-      this.userService.jwttoken=JSON.stringify( response.data.token)
+      this.userService.user = response.data.user
+      this.tokenService.setToken(JSON.stringify(response.data.token).replaceAll('"',''))
       this.responseData = response;
       console.log(this.userService.user)
     })
@@ -38,11 +40,16 @@ export class SigninComponent {
   getBooks(){
     this.bookService.getBooks().subscribe(res=>{
       this.responseData=res
-      console.log(JSON.stringify(res))
+    });
+  }
+
+  getUsers(){
+    this.userService.getUsers().subscribe(res=>{
+      this.responseData = res;
     });
   }
   log(){
-    console.log(this.userService.jwttoken)
+    console.log(this.tokenService.getToken())
   }
 
 }
