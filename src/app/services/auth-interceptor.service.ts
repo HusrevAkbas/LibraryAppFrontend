@@ -11,9 +11,9 @@ export class AuthInterceptorService implements HttpInterceptor {
   constructor(
     private tokenService: TokenService
   ) { }
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.tokenService.getToken();
-    alert(token)
     let authRequest = req;
     if(token.length!=0){
       authRequest = req.clone({
@@ -22,7 +22,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         }
       })
     }
-    console.log(authRequest.headers)
+    console.log(authRequest)
     return next.handle(authRequest);
     throw new Error('Method not implemented.');
   }

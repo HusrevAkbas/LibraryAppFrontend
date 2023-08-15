@@ -10,7 +10,7 @@ import { Book } from '../models/book';
 export class BookListComponent {
   bookList: Book[] = [];
   constructor(private bookService: BookService){
-    this.bookService.getBooks().subscribe((res:any)=>{
+    this.bookService.getAllBooks().subscribe((res:any)=>{
       this.bookList = res.data;
       console.log(res);
     });

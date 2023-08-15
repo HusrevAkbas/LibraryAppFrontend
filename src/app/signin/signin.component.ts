@@ -24,32 +24,26 @@ export class SigninComponent {
     password: new FormControl("")
   })
 
-  signin ():any{
+  signin (){
     let loginRequest:LoginRequest = new LoginRequest(
       this.signinForm.value.username!,
       this.signinForm.value.password!
     )
     this.userService.signin(loginRequest).subscribe(response =>{
-      this.userService.user = response.data.user
+      this.userService.principle = response.data.user
       this.tokenService.setToken(JSON.stringify(response.data.token).replaceAll('"',''))
       this.responseData = response;
-      console.log(this.userService.user)
+      console.log(this.userService.principle)
     })
   }
-
-  getBooks(){
-    this.bookService.getBooks().subscribe(res=>{
+  
+  tryNewMethod(){
+    this.bookService.getBookByUserId(3).subscribe(res=>{
       this.responseData=res
     });
   }
-
-  getUsers(){
-    this.userService.getUsers().subscribe(res=>{
-      this.responseData = res;
-    });
-  }
-  log(){
-    console.log(this.tokenService.getToken())
-  }
+  // log(){
+  //   console.log(this.tokenService.getToken())
+  // }
 
 }

@@ -16,7 +16,14 @@ export class UserService {
     private tokenService : TokenService
   ) {}
 
-    user:User;
+    private _principle: User;
+    
+  public get principle(): User {
+    return this._principle;
+  }
+  public set principle(value: User) {
+    this._principle = value;
+  }
     headers = new HttpHeaders({
       'Authorization': 'Bearer '+ this.tokenService.getToken()
     })

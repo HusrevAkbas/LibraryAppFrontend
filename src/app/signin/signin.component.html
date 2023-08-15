@@ -1,4 +1,4 @@
-<p> {{responseData | json }} </p>
+<p> {{ responseData | json}} </p>
 <section class="vh-100">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -8,7 +8,7 @@
             <div class="row justify-content-center">
               <div class="col-md-12 col-lg-9 col-xl-11 order-2 order-lg-1">
 
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
 
                 <form [formGroup]="signinForm" class="mx-1 mx-md-4">
 
@@ -37,8 +37,7 @@
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <button type="button" (click)="signin()" class="btn btn-primary btn-lg"> Log in </button>
-                    <button type="button" (click)="getBooks()" class="btn btn-primary btn-lg"> getBooks </button>
-                    <button type="button" (click)="getUsers()" class="btn btn-primary btn-lg"> getUsers </button>
+                    <button type="button" (click)="tryNewMethod()" class="btn btn-primary btn-lg"> new query </button>
                   </div>
 
                 </form>

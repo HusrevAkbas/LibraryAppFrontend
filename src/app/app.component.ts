@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'libraryApp01';
+
+  @HostListener('window:unload',['$event'])
+  unloadHandler(event){
+    window.sessionStorage.clear();
+  }
 }

@@ -11,6 +11,8 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { BookFormComponent } from './book-form/book-form.component';
+import { BookAddComponent } from './book-add/book-add.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     NavbarComponent,
     BookListComponent,
     RegisterComponent,
-    SigninComponent
+    SigninComponent,
+    BookFormComponent,
+    BookAddComponent
   ],
   imports: [
     BrowserModule,

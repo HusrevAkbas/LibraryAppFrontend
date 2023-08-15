@@ -4,12 +4,14 @@ import { HomeComponent } from './home/home.component';
 import { BookListComponent } from './book/book-list.component';
 import { RegisterComponent } from './register/register.component';
 import { SigninComponent } from './signin/signin.component';
+import { BookFormComponent } from './book-form/book-form.component';
 
 const routes: Routes = [
   {path : "", component : HomeComponent, title : "Home"},
   {path: "books", component: BookListComponent, title:"Books"},
   {path: "register", component: RegisterComponent, title:"Register"},
-  {path: "login", component: SigninComponent, title:"Log in"}
+  {path: "login", component: SigninComponent, title:"Log in"},
+  {path: "book/add", component: BookFormComponent, title:"Add new book"}
 ];
 
 @NgModule({
