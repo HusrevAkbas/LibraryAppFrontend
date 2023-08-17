@@ -4,6 +4,7 @@ import { Book } from '../models/book';
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 import { TokenService } from './token.service';
+import { Result } from '../models/result';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +20,10 @@ export class BookService {
     headers = new HttpHeaders({
       'Authorization': 'Bearer '+ this.tokenService.getToken()
     })
-  getAllBooks(): Observable<any>{
+  getAllBooks(){
     return this.http.get("http://localhost:8080/api/book/all");
   }
-  getBookById(id:number): Observable<any>{
+  getBookById(id:number){
     return this.http.get("http://localhost:8080/api/book/"+id);
   }
   getBookByUserId(id: number){

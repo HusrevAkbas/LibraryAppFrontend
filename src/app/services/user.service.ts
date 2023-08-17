@@ -5,6 +5,7 @@ import { LoginRequest } from '../models/requests/login-request';
 import { User } from '../models/user';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
+import { Result } from '../models/result';
 
 @Injectable({
   providedIn: 'root'
@@ -12,27 +13,23 @@ import { TokenService } from './token.service';
 export class UserService {
 
   constructor(
-    private http: HttpClient,
-    private tokenService : TokenService
+    private http: HttpClient
   ) {}
 
     private _principle: User;
-    
+
   public get principle(): User {
     return this._principle;
   }
   public set principle(value: User) {
     this._principle = value;
   }
-    headers = new HttpHeaders({
-      'Authorization': 'Bearer '+ this.tokenService.getToken()
-    })
 
-  register(registerRequest: RegisterRequest) :any {
+  register(registerRequest: RegisterRequest) :Observable<any> {
     return this.http.post("http://localhost:8080/api/auth/register", registerRequest);
   }
 
-  signin (loginRequest: LoginRequest):any{
+  signin (loginRequest: LoginRequest): Observable<any>{
     return this.http.post("http://localhost:8080/api/auth/login", loginRequest);
   }
   getUsers(): Observable<any>{

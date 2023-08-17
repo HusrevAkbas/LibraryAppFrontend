@@ -14,4 +14,7 @@ export class TokenService {
   public setToken(jwtToken: string){
     this.cookieService.set('token',jwtToken,7,'/',undefined,true,'Strict');
   }
+  public deleteToken(){
+    this.cookieService.delete('token','/', undefined,true,'Strict')
+  }
 }

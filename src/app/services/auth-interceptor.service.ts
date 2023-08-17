@@ -22,7 +22,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         }
       })
     }
-    console.log(authRequest)
+    console.log(authRequest);
     return next.handle(authRequest);
     throw new Error('Method not implemented.');
   }
