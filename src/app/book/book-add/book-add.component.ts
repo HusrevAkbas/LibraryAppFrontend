@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup,Validators, FormControl } from '@angular/forms';
-import { BookService } from '../services/book.service';
-import { Book } from '../models/book';
-import { TokenService } from '../services/token.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BookService } from '../../services/book.service';
+import { TokenService } from '../../services/token.service';
 
 @Component({
-  selector: 'app-book-form',
-  templateUrl: './book-form.component.html',
-  styleUrls: ['./book-form.component.css']
+  selector: 'app-book-add',
+  templateUrl: './book-add.component.html',
+  styleUrls: ['./book-add.component.css']
 })
-export class BookFormComponent {
+export class BookAddComponent {
+
 
   bookForm: FormGroup;
 
@@ -32,15 +32,15 @@ export class BookFormComponent {
       name: ["", Validators.required],
       author: ["", Validators.required],
       userEntity: this.formBuilder.group({
-        id: 5
+        id: ""
       }),
       publisher: ["", Validators.required],
-      publishDate: ["", Validators.required, Validators],
+      publishDate: ["", Validators.required],
       publishPlace: ["", Validators.required],
       pageCount: ["", [Validators.required, Validators.min(0)]],
       available: true,
       category: this.formBuilder.group({
-        id: 2
+        id: ""
       }),
       isbn10: [""],
       isbn13: [""],

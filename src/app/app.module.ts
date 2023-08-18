@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { BookListComponent } from './book/book-list.component';
+import { BookListComponent } from './book/book-list/book-list.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
-import { BookFormComponent } from './book-form/book-form.component';
-import { BookAddComponent } from './book-add/book-add.component';
+import { BookFormComponent } from './book/book-form/book-form.component';
+import { BookAddComponent } from './book/book-add/book-add.component';
+import { FormGeneratorComponent } from './shared/form-generator/form-generator.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BookAddComponent } from './book-add/book-add.component';
     RegisterComponent,
     SigninComponent,
     BookFormComponent,
-    BookAddComponent
+    BookAddComponent,
+    FormGeneratorComponent
   ],
   imports: [
     BrowserModule,

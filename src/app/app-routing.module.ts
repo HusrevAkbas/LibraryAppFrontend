@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { BookListComponent } from './book/book-list.component';
+import { BookListComponent } from '@book/book-list/book-list.component';
 import { RegisterComponent } from './register/register.component';
 import { SigninComponent } from './signin/signin.component';
-import { BookFormComponent } from './book-form/book-form.component';
-import { BookAddComponent } from './book-add/book-add.component';
+import { BookAddComponent } from './book/book-add/book-add.component';
 
 const routes: Routes = [
   {path : "", component : HomeComponent, title : "Home"},
