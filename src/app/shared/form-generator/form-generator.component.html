@@ -8,8 +8,7 @@
               <div class="col-md-12 col-lg-9 col-xl-11 order-2 order-lg-1">
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Book Form</p>
-
-                <app-form-group [form]="form" [keys]="keys"></app-form-group>
+                <app-form-group [form]="form" (formEvent)="receiveForm($event)"></app-form-group>
 
               </div>
             </div>

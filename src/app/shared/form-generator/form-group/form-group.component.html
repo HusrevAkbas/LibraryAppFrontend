@@ -1,7 +1,19 @@
-  <div [formGroup]="form" class="row col-md d-flex flex-row align-items-center mb-4">
-    <div *ngFor="let key of keys"  class="col-12 form-outline flex-fill mb-0">
-      <input type="text" id="form1" class="form-control" formControlName="key" />
-      <label class="form-label" for="form1"> {{key}} </label>
+  <form [formGroup]="formGroup" class="row col-md d-flex flex-row align-items-center mb-4">
+    <div *ngFor="let key of keys" class="col-12 form-outline flex-fill mb-0">
+      <!-- <div *ngIf="!isGroup(formGroup[key])"> -->
+        <input type="text" id="form1" class="form-control" formControlName="{{key}}" />
+        <label class="form-label" for="form1"> {{key}} </label>
+      <!-- </div> -->
+      <!-- <div *ngIf="isGroup(formGroup[key])">
+        <div [formGroup]="key">
+          <div  *ngFor="let subkey of ">
+            <input type="text" id="form1" class="form-control" formControlName="{{subkey}}" />
+            <label class="form-label" for="form1"> {{subkey}} {{key}} </label>
+          </div>
+        </div>
+      </div> -->
     </div>
-  </div>
+  </form>
+
+  <button type="button" (click)="sendForm()" class="btn btn-primary btn-lg"> send form </button>
 <p>Form group ends</p>

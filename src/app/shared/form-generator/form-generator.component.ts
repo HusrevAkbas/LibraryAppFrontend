@@ -15,6 +15,7 @@ import { RegisterRequest } from '@models/requests/register-request';
 export class FormGeneratorComponent implements OnInit {
 
   formRequestBody: FormRequest;
+  baseForm: FormGroup;
   form: FormGroup;
   keys: any[] = []
 
@@ -42,15 +43,17 @@ export class FormGeneratorComponent implements OnInit {
     return form;
     }
 
-    addFormControls(group: FormGroup, key){
-
+    receiveForm($event){
+      this.baseForm = $event
+      // this.log()
     }
+
     isModel(input): boolean {
       return input instanceof Model;
     }
 
   log(){
-    console.log(this.form.controls)
+    console.log(this.baseForm.controls)
   }
 
 }

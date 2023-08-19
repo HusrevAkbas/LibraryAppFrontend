@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Model } from '@models/model';
 
 @Component({
   selector: 'app-form-group',
@@ -10,16 +11,27 @@ export class FormGroupComponent implements OnInit{
 
   @Input() form: FormGroup;
   @Input() keys: any[];
+  @Output() formEvent = new EventEmitter();
 
   formGroup: FormGroup
+  subKeys
   inkeys: any[];
 
   constructor(private fb: FormBuilder){}
 
   ngOnInit(): void {
-    this.createForm();
-    this.inkeys = Object.keys(this.formGroup.controls)
+    this.formGroup = this.form;
+    this.keys = this.getKeys(this.formGroup)
+    // this.createForm();
+    // this.inkeys = Object.keys(this.formGroup.controls)
+  }
+
+  sendForm(){
+    this.formEvent.emit(this.formGroup)
     this.log()
+  }
+  setSubKeys(){
+
   }
 
   createForm(){
@@ -31,8 +43,15 @@ export class FormGroupComponent implements OnInit{
     }))
   }
 
+  isGroup(input){
+    return input instanceof FormGroup;
+  }
+
+  getKeys(form): any[]{
+    return Object.keys(form.controls);
+  }
   log(){
-    console.log(this.keys)
+    console.log(this.getKeys(this.formGroup))
     console.log(this.formGroup.controls)
 
   }
