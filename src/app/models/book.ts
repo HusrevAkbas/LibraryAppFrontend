@@ -10,7 +10,7 @@ export interface Book {
   publishDate: number,
   publishPlace: String,
   pageCount: number,
-  available: boolean
+  available: boolean,
   category: Category,
   isbn10: String,
   isbn13: String,

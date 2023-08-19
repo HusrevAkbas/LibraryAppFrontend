@@ -1,0 +1,7 @@
+  <div [formGroup]="form" class="row col-md d-flex flex-row align-items-center mb-4">
+    <div *ngFor="let key of keys"  class="col-12 form-outline flex-fill mb-0">
+      <input type="text" id="form1" class="form-control" formControlName="key" />
+      <label class="form-label" for="form1"> {{key}} </label>
+    </div>
+  </div>
+<p>Form group ends</p>

@@ -1,7 +1,9 @@
 import { Type } from "@angular/compiler";
 
-export interface Result<T> {
-    success: boolean,
-    message: String,
-    data?: T
+export class Result<T> {
+  constructor(
+    public success: boolean,
+    public message: String,
+    public data?: T
+  ){}
 }
