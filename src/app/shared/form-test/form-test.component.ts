@@ -24,4 +24,8 @@ export class FormTestComponent {
       "c5":subForm
     })
   }
+
+  log(){
+    console.log(this.parentForm.value)
+  }
 }
