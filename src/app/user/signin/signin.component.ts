@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '@services/user.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { LoginRequest } from '../models/requests/login-request';
-import { BookService } from '../services/book.service';
-import { TokenService } from '../services/token.service';
+import { LoginRequest } from '@models/requests/login-request';
+import { BookService } from '@services/book.service';
+import { TokenService } from '@services/token.service';
 
 @Component({
   selector: 'app-signin',
@@ -36,7 +36,7 @@ export class SigninComponent {
       console.log(this.userService.principle)
     })
   }
-  
+
   tryNewMethod(){
     this.bookService.getBookByUserId(3).subscribe(res=>{
       this.responseData=res
