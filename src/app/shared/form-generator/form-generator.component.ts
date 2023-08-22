@@ -1,11 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Category } from '@models/category';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Model } from '@models/model';
 import { FormRequest } from '@models/requests/form-request';
-import { LoginRequest } from '@models/requests/login-request';
-import { PostRequest } from '@models/requests/post-request';
-import { RegisterRequest } from '@models/requests/register-request';
 
 @Component({
   selector: 'app-form-generator',
@@ -14,23 +10,36 @@ import { RegisterRequest } from '@models/requests/register-request';
 })
 export class FormGeneratorComponent implements OnInit {
 
-  formRequestBody: FormRequest;
-  baseForm: FormGroup;
-  form: FormGroup;
-  keys: any[] = []
+  @Input() baseForm: FormGroup;
+  @Input() formControls: any;
+  controlKeys: any[] = []
 
   constructor(private fb: FormBuilder){
   }
   ngOnInit(): void {
-    this.formRequestBody = new FormRequest();
-    this.form = this.createForm(this.formRequestBody);
-    this.keys = Object.keys(this.form.controls)
-    //this.log();
+    // this.baseForm = this.exampleForm()
+    this.formControls = this.baseForm.controls
+    this.controlKeys = this.getKeys(this.formControls)
+    this.log();
+  }
+
+  exampleForm(){
+    let form = this.fb.group({})
+    let subForm = this.fb.group({})
+    subForm.addControl("subc1", new FormControl("subp1"))
+    form.addControl("c1", new FormControl("p1",Validators.required))
+    form.addControl("c2", new FormControl("p2",Validators.required))
+    form.addControl("subc2", subForm)
+    return form;
+  }
+
+  getGroup(group, groupname){
+    return group.controls[groupname]
   }
 
 
   createForm(model: Model | FormRequest): FormGroup{
-    let keys = Object.keys(model);
+    let keys = this.getKeys(model)
     let form = this.fb.group({})
     //chek if model[key] is another model ? y callCreateForm : n add formControl
     keys.forEach(key=>{
@@ -41,18 +50,23 @@ export class FormGeneratorComponent implements OnInit {
     })
 
     return form;
-    }
+  }
 
-    receiveForm($event){
-      this.baseForm = $event
-      // this.log()
-    }
+  getKeys(object){
+    return Object.keys(object);
+  }
 
-    isModel(input): boolean {
+  isFormGroup(input){
+    return input instanceof FormGroup;
+  }
+
+  isModel(input): boolean {
       return input instanceof Model;
-    }
+  }
 
   log(){
+    console.log(this.controlKeys)
+    console.log(this.baseForm)
     console.log(this.baseForm.controls)
   }
 

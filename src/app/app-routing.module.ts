@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { SigninComponent } from './signin/signin.component';
 import { BookAddComponent } from './book/book-add/book-add.component';
 import { FormGeneratorComponent } from './shared/form-generator/form-generator.component';
+import { FormTestComponent } from './shared/form-test/form-test.component';
 
 const routes: Routes = [
   {path : "", component : HomeComponent, title : "Home"},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: "register", component: RegisterComponent, title:"Register"},
   {path: "login", component: SigninComponent, title:"Log in"},
   {path: "book/add", component: BookAddComponent, title:"Add new book"},
-  {path: "form", component: FormGeneratorComponent, title:"Created form"}
+  {path: "form", component: FormGeneratorComponent, title:"Created form"},
+  {path: "formtest", component: FormTestComponent, title:"Test form"}
 ];
 
 @NgModule({

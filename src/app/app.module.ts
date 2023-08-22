@@ -14,7 +14,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { BookFormComponent } from './book/book-form/book-form.component';
 import { BookAddComponent } from './book/book-add/book-add.component';
 import { FormGeneratorComponent } from './shared/form-generator/form-generator.component';
-import { FormGroupComponent } from './shared/form-generator/form-group/form-group.component';
+import { FormTestComponent } from './shared/form-test/form-test.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { FormGroupComponent } from './shared/form-generator/form-group/form-grou
     BookFormComponent,
     BookAddComponent,
     FormGeneratorComponent,
-    FormGroupComponent
+    FormTestComponent
   ],
   imports: [
     BrowserModule,
