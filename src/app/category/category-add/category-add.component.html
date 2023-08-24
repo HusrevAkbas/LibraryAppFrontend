@@ -1,2 +1,4 @@
-<p>category-add works!</p>
-<app-form-generator></app-form-generator>
+<h1>Add new category</h1>
+{{data|json}}
+<app-form-generator [form]="form" [model]="model" [ignoreProperties]="ignore"></app-form-generator>
+<button class="btn btn-primary" (click)="addCategory()" >Add category</button>

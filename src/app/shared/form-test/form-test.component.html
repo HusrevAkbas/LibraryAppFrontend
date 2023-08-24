@@ -1,5 +1,5 @@
 <p>form-test works!</p>
 <div class="m-3">
-  <app-form-generator [baseForm]="parentForm"></app-form-generator>
+  <app-form-generator [form]="parentForm" [model]="parentModel" [ignoreProperties]="parentIgnore" ></app-form-generator>
   <button class="btn btn-danger" (click)="log()"> Log </button>
 </div>

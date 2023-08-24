@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Category } from '@models/category';
 import { Model } from '@models/model';
 import { FormRequest } from '@models/requests/form-request';
 
@@ -10,16 +11,20 @@ import { FormRequest } from '@models/requests/form-request';
 })
 export class FormGeneratorComponent implements OnInit {
 
-  @Input() baseForm: FormGroup;
-  @Input() formControls: any;
-  controlKeys: any[] = []
+  @Input() form: FormGroup;
+  @Input() model: Model;
+  @Input() ignoreProperties: any;
+  formControls;
+  properties: any[];
+  controlKeys: any[];
 
   constructor(private fb: FormBuilder){
   }
   ngOnInit(): void {
-    // this.baseForm = this.exampleForm()
-    this.formControls = this.baseForm.controls
-    this.controlKeys = this.getKeys(this.formControls)
+    this.createForm(this.model, this.form, this.ignoreProperties)
+    // this.controlKeys.forEach(key=> console.log( typeof this.model[key]))
+    this.formControls = this.form.controls;
+    this.controlKeys = Object.keys(this.formControls);
     this.log();
   }
 
@@ -38,22 +43,34 @@ export class FormGeneratorComponent implements OnInit {
   }
 
 
-  createForm(model: Model | FormRequest): FormGroup{
-    let keys = this.getKeys(model)
-    let form = this.fb.group({})
-    //chek if model[key] is another model ? y callCreateForm : n add formControl
-    keys.forEach(key=>{
-      if(this.isModel(model[key])){
-        form.addControl(key, this.createForm(model[key]))
-      }
-      form.addControl(key, new FormControl(""))
-    })
+  createForm(model: Model | FormRequest, formGroup: FormGroup, ignore: any[]): FormGroup{
+    //1 get model property names
+    this.properties = this.getOwnPropertyNamesFromObject(model);
 
-    return form;
+    let ignorePropertyArray = this.getOwnPropertyNamesFromObject(ignore)
+    console.log(ignorePropertyArray)
+    //2 set formGroup for model property
+    this.properties.forEach((key)=>{
+        if(this.isModel(this.model[key])){
+          const nestedGroup = this.fb.group({})
+          formGroup.addControl(key, nestedGroup)
+        } else {
+          if(!ignorePropertyArray.includes(key)){
+            formGroup.addControl(key,new FormControl(model[key]||''))
+          }
+        }
+    })
+    //3 set formControl for primitives
+
+    return formGroup;
   }
 
   getKeys(object){
     return Object.keys(object);
+  }
+
+  getOwnPropertyNamesFromObject(model: any){
+    return Object.getOwnPropertyNames(model);
   }
 
   isFormGroup(input){
@@ -65,9 +82,10 @@ export class FormGeneratorComponent implements OnInit {
   }
 
   log(){
-    console.log(this.controlKeys)
-    console.log(this.baseForm)
-    console.log(this.baseForm.controls)
+    // console.log(this.model)
+    // console.log(this.controlKeys)
+    // console.log(this.form)
+    console.log(this.form.controls)
   }
 
 }

@@ -1,9 +1,10 @@
  <!-- [formGroup]="bookAdd" -->
- <div [formGroup]="baseForm">
+ <div [formGroup]="form">
   <ng-container *ngFor="let control of controlKeys" >
     <ng-container *ngIf="isFormGroup(formControls[control]); else formControlTemplate">
       <div [formGroupName]="control" class="form-outline flex-fill mb-0">
-        <app-form-generator [baseForm]="formControls[control]" ></app-form-generator>
+        {{control}}
+        <app-form-generator [form]="formControls[control]" [model]="model[control]" [ignoreProperties]="ignoreProperties[control]" ></app-form-generator>
       </div>
     </ng-container>
 

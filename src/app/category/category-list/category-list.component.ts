@@ -9,12 +9,18 @@ import { CategoryService } from '@services/category.service';
 export class CategoryListComponent {
 
   categoryList;
+  category;
 
   constructor(private categoryService: CategoryService){}
 
   getCategories(){
     this.categoryService.getCategories().subscribe(data=>{
       this.categoryList = data
+    })
+  }
+  getCategoryById(id:number){
+    this.categoryService.getCategoryById(id).subscribe(data=>{
+      this.category = data;
     })
   }
 
