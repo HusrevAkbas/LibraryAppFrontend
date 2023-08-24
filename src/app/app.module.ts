@@ -15,6 +15,8 @@ import { BookFormComponent } from './book/book-form/book-form.component';
 import { BookAddComponent } from './book/book-add/book-add.component';
 import { FormGeneratorComponent } from './shared/form-generator/form-generator.component';
 import { FormTestComponent } from './shared/form-test/form-test.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { CategoryAddComponent } from './category/category-add/category-add.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { FormTestComponent } from './shared/form-test/form-test.component';
     BookFormComponent,
     BookAddComponent,
     FormGeneratorComponent,
-    FormTestComponent
+    FormTestComponent,
+    CategoryListComponent,
+    CategoryAddComponent
   ],
   imports: [
     BrowserModule,
