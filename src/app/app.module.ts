@@ -17,6 +17,8 @@ import { FormGeneratorComponent } from './shared/form-generator/form-generator.c
 import { FormTestComponent } from './shared/form-test/form-test.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { CategoryAddComponent } from './category/category-add/category-add.component';
+import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
+import { CategoryDropdownComponent } from './shared/form-generator/category-dropdown/category-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +32,16 @@ import { CategoryAddComponent } from './category/category-add/category-add.compo
     FormGeneratorComponent,
     FormTestComponent,
     CategoryListComponent,
-    CategoryAddComponent
+    CategoryAddComponent,
+    CategoryDropdownComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbDropdown
   ],
   providers: [
     {

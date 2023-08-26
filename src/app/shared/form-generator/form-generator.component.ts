@@ -13,7 +13,7 @@ export class FormGeneratorComponent implements OnInit {
 
   @Input() form: FormGroup;
   @Input() model: Model;
-  @Input() ignoreProperties: any;
+  @Input() ignoreProperties: any | undefined;
   formControls;
   properties: any[];
   controlKeys: any[];
@@ -48,12 +48,11 @@ export class FormGeneratorComponent implements OnInit {
     this.properties = this.getOwnPropertyNamesFromObject(model);
 
     let ignorePropertyArray = this.getOwnPropertyNamesFromObject(ignore)
-    console.log(ignorePropertyArray)
     //2 set formGroup for model property
     this.properties.forEach((key)=>{
         if(this.isModel(this.model[key])){
           const nestedGroup = this.fb.group({})
-          formGroup.addControl(key, nestedGroup)
+          formGroup.addControl(key, nestedGroup,ignore[key])
         } else {
           if(!ignorePropertyArray.includes(key)){
             formGroup.addControl(key,new FormControl(model[key]||''))
@@ -70,6 +69,9 @@ export class FormGeneratorComponent implements OnInit {
   }
 
   getOwnPropertyNamesFromObject(model: any){
+    if(model === undefined){
+      return []
+    }
     return Object.getOwnPropertyNames(model);
   }
 

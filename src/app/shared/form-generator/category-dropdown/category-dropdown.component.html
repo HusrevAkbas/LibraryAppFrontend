@@ -1,0 +1,11 @@
+<!-- {{response|json}}
+{{successResultData|json}} -->
+    <!-- {{categoryForm|json}} -->
+<div [formGroup]="categoryForm">
+  <select [formControlName]="'id'" #categories class="form-select" aria-label="Default select example" placeholder="Select an option">
+    <ng-container *ngFor="let option of successResultData">
+      <option value="{{option['id']}}"> {{option['name']}} </option>
+    </ng-container>
+  </select>
+    <p> Select a category </p>
+</div>

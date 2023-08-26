@@ -32,15 +32,9 @@ export class FormTestComponent implements OnInit {
   }
   ngOnInit(): void {
 
-    this.parentIgnore = {
-      'password': 1,
-      'category': {
-        'id':1,
-        'imageUrl':2
-      }
-    }
+    this.parentIgnore = {}
     this.parentForm = this.fb.group({})
-    this.parentModel = new Category();
+    this.parentModel = new FormRequest();
   }
 
   log(){
